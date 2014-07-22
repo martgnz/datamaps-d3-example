@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <!-- I recommend you host this file on your own, since this will change without warning -->
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+  <h2>Choropleth map and arcs with D3</h2>
+  <div id="container1" style="position: relative; width: 60%; height: 600px;"></div>
+     <script>
+     
+       //basic map config with custom fills, mercator projection
+      var map = new Datamap({
+        scope: 'world',
+        element: document.getElementById('container1'),
+        projection: 'mercator',
+           geography_config: {
+     borderColor: 'rgba(255,255,255,0.3)',
+     highlightBorderColor: 'rgba(0,0,0,0.5)',
+},
+      
+        /* Zoom in on Israel
+ setProjection: function(element) {
+    var projection = d3.geo.mercator()
+      .center([31, 35])
+      .rotate([4.4, 0])
+      .scale(500)
+      .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+    var path = d3.geo.path()
+      .projection(projection);
+    
+    return {path: path, projection: projection};
+  }, */
+  
+        fills: {
+          defaultFill: '#2ca25f',
+          vende: '#fc9272',
+          vendemucho: '#de2d26'
+        },
+        
+        data: {
+         ESP: {
+            fillKey: 'vendemucho',
+            electoralVotes: 10
+        },
+          CAN: {fillKey: 'vende' },
+          BRA: {fillKey: 'vendemucho' },
+          ARG: {fillKey: 'vendemucho'},
+          COL: {fillKey: 'vendemucho' },
+          AUS: {fillKey: 'vendemucho' },
+          ZAF: {fillKey: 'vendemucho' },
+          MAD: {fillKey: 'vendemucho' }       
+        }
+      })
+      
+// arc plugin
+      map.arc([
+       {
+        origin: {
+            latitude: -9.380965,
+            longitude:  -49.049643
+        },
+        destination: {
+            latitude: 31.758003, 
+            longitude: 35.026884
+        }
+      },
+        {
+        origin: {
+            latitude: -32.739211,
+            longitude: 150.332104
+        },
+        destination: {
+            latitude: 31.758003, 
+            longitude: 35.026884
+        }
+      },
+        {
+        origin: {
+            latitude: -35.146965,
+            longitude:  -58.940718
+        },
+        destination: {
+            latitude: 31.758003, 
+            longitude: 35.026884
+        }
+      },
+      {
+          origin: {
+              latitude: 40.433385,
+              longitude: -3.691896
+          },
+          destination: {
+            latitude: 31.758003,
+            longitude: 35.026884
+          }
+      }
+      ], {strokeWidth: 5, strokeColor: '#3182bd', arcSharpness: 0.2} );
+       
+      
+       //bubbles, custom popup on hover template
+    map.bubbles([
+       //{name: 'Hot', latitude: 21.32, longitude: 5.32, radius: 10, fillKey: 'gt50'},
+       //{name: 'Chilly', latitude: -25.32, longitude: 120.32, radius: 18, fillKey: 'lt50'},
+       //{name: 'Hot again', latitude: 21.32, longitude: -84.32, radius: 8, fillKey: 'gt50'},
+
+     ], {
+       popupTemplate: function(geo, data) {
+         return "<div class='hoverinfo'>It is " + data.name + "</div>";
+       }
+     });
+     </script>
+</body>

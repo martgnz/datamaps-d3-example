@@ -1,4 +1,4 @@
-datamaps-d3-example
+Datamaps - Choropleth and arc map
 ===================
 
-A choropleth example of Datamaps with arcs
+Just playing.
