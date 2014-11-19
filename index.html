@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<body>
+<head>
   <script src="d3.min.js"></script>
   <script src="topojson.v1.min.js"></script>
-  <!-- I recommend you host this file on your own, since this will change without warning -->
-  <script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+  <script src="datamaps.world.min.js"></script>
+</head>
+<body>
+<div class="text">
+<h1 style="font-family: Helvetica, Arial, sans-serif; position: absolute">Dummy choropleths and arcs with Datamaps</h1>
+<h3 style="font-family: Helvetica, Arial, sans-serif; position: absolute; top: 45px">d3.geo.stereographic projection because the fun</h3>
+</div>
   <div id="container1"></div>
      <script>
-     
-       //basic map config with custom fills, mercator projection
       var map = new Datamap({
         scope: 'world',
+        height: 600,
         element: document.getElementById('container1'),
-        projection: 'mercator',
-           geography_config: {
-     borderColor: 'rgba(255,255,255,0.3)',
-     highlightBorderColor: 'rgba(0,0,0,0.5)',
-},
-      
-        /* Zoom in on Israel
- setProjection: function(element) {
-    var projection = d3.geo.mercator()
-      .center([31, 35])
-      .rotate([4.4, 0])
-      .scale(500)
-      .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
-    var path = d3.geo.path()
-      .projection(projection);
-    
-    return {path: path, projection: projection};
-  }, */
-  
+        projection: 'stereographic',
+        geography_config: {
+          borderColor: 'rgba(255,255,255,0.3)',
+          highlightBorderColor: 'rgba(0,0,0,0.5)',
+      },
+
         fills: {
-          defaultFill: '#2ca25f',
-          dummy: '#fc9272',
-          dummy-arc: '#de2d26'
+          defaultFill: '#d3d3d3',
+          dummy: '#de2d26',
+          dummyarc: '#de2d26'
         },
         
         data: {
          ESP: {
-            fillKey: 'dummy-arc',
+            fillKey: 'dummyarc',
             electoralVotes: 10
         },
           CAN: {fillKey: 'dummy' },
-          BRA: {fillKey: 'dummy-arc' },
-          ARG: {fillKey: 'dummy-arc'},
-          COL: {fillKey: 'dummy-arc' },
-          AUS: {fillKey: 'dummy-arc' },
-          ZAF: {fillKey: 'dummy-arc' },
-          MAD: {fillKey: 'dummy-arc' }       
+          BRA: {fillKey: 'dummyarc' },
+          ARG: {fillKey: 'dummyarc'},
+          COL: {fillKey: 'dummyarc' },
+          AUS: {fillKey: 'dummyarc' },
+          ZAF: {fillKey: 'dummyarc' },
+          MAD: {fillKey: 'dummyarc' }       
         }
       })
       
@@ -94,15 +85,9 @@
             longitude: 35.026884
           }
       }
-      ], {strokeWidth: 5, strokeColor: '#3182bd', arcSharpness: 0.2} );
-       
-      
-       //bubbles, custom popup on hover template
-    map.bubbles([
-       //{name: 'Hot', latitude: 21.32, longitude: 5.32, radius: 10, fillKey: 'gt50'},
-       //{name: 'Chilly', latitude: -25.32, longitude: 120.32, radius: 18, fillKey: 'lt50'},
-       //{name: 'Hot again', latitude: 21.32, longitude: -84.32, radius: 8, fillKey: 'gt50'},
+      ], {strokeWidth: 2, strokeColor: '#808080', arcSharpness: 0.5} );
 
+    map.bubbles([
      ], {
        popupTemplate: function(geo, data) {
          return "<div class='hoverinfo'>It is " + data.name + "</div>";
@@ -110,3 +95,4 @@
      });
      </script>
 </body>
+</html>
