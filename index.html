@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <body>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="topojson.v1.min.js"></script>
   <!-- I recommend you host this file on your own, since this will change without warning -->
-  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+  <script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
   <div id="container1"></div>
      <script>
      
@@ -33,22 +33,22 @@
   
         fills: {
           defaultFill: '#2ca25f',
-          vende: '#fc9272',
-          vendemucho: '#de2d26'
+          dummy: '#fc9272',
+          dummy-arc: '#de2d26'
         },
         
         data: {
          ESP: {
-            fillKey: 'vendemucho',
+            fillKey: 'dummy-arc',
             electoralVotes: 10
         },
-          CAN: {fillKey: 'vende' },
-          BRA: {fillKey: 'vendemucho' },
-          ARG: {fillKey: 'vendemucho'},
-          COL: {fillKey: 'vendemucho' },
-          AUS: {fillKey: 'vendemucho' },
-          ZAF: {fillKey: 'vendemucho' },
-          MAD: {fillKey: 'vendemucho' }       
+          CAN: {fillKey: 'dummy' },
+          BRA: {fillKey: 'dummy-arc' },
+          ARG: {fillKey: 'dummy-arc'},
+          COL: {fillKey: 'dummy-arc' },
+          AUS: {fillKey: 'dummy-arc' },
+          ZAF: {fillKey: 'dummy-arc' },
+          MAD: {fillKey: 'dummy-arc' }       
         }
       })
       
